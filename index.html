@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Fortnight Invoice Generator — Input</title>
   <link rel="stylesheet" href="style.css">
+  <!-- preload chosen fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app">
@@ -13,8 +15,13 @@
       <div class="actions">
         <label class="tiny">Template
           <select id="template_select">
-            <option value="classic">Classic (like sample)</option>
-            <option value="compact">Compact</option>
+            <option value="classic" selected>Classic</option>
+            <option value="modern">Modern Clean</option>
+            <option value="minimal">Minimal</option>
+            <option value="boxed">Boxed Professional</option>
+            <option value="ndis">NDIS Formal</option>
+            <option value="dark">Dark Theme</option>
+            <option value="compact">Compact One-Page</option>
           </select>
         </label>
 
@@ -24,15 +31,20 @@
 
         <label class="tiny">Font
           <select id="font_select">
-            <option value="Arial,Helvetica,sans-serif">Arial</option>
-            <option value="'Helvetica Neue',Helvetica,Arial,sans-serif">Helvetica Neue</option>
-            <option value="Georgia,serif">Georgia</option>
-            <option value="Tahoma,Arial,sans-serif">Tahoma</option>
+            <option value="Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Poppins</option>
+            <option value="Roboto,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif">Roboto</option>
+            <option value="Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Inter</option>
+            <option value="Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Montserrat</option>
+            <option value="Open Sans,Arial,Helvetica,sans-serif">Open Sans</option>
           </select>
         </label>
 
-        <button class="btn" id="generate_preview">Generate Preview (Open Tab)</button>
-        <button class="btn ghost" id="clear_table">Clear Table</button>
+        <label class="tiny">GST (10%)
+          <input id="gst_toggle" type="checkbox">
+        </label>
+
+        <button class="btn" id="generate_preview">Generate Preview</button>
+        <button class="btn ghost" id="clear_table">Clear Rows</button>
       </div>
     </header>
 
@@ -109,7 +121,7 @@
           </label>
         </div>
 
-        <label>Super Rate (%) — use e.g. 10.00 for 10%
+        <label>Super Rate (%) — e.g. 10.00
           <input id="super_rate" type="number" step="0.01" value="10.00">
         </label>
 
@@ -143,8 +155,8 @@
 
         <div class="hr"></div>
 
-        <h3>Itemised Work Log (table drives the invoice)</h3>
-        <div class="small">Add rows for each shift. Enter Hours, Rate Type or leave blank to auto-detect by Day.</div>
+        <h3>Itemised Work Log</h3>
+        <div class="small">Add rows. Rate Type blank = auto-detect (Sunday, Saturday, Afternoon if start >= 15:00, else Ordinary).</div>
 
         <table class="items-table" id="items_table_input">
           <thead>
@@ -169,24 +181,22 @@
           <div class="small">Rows: <span id="rows_count">0</span></div>
         </div>
 
-        <div style="height:18px"></div>
       </section>
 
       <aside class="panel preview-instructions">
         <h3>Preview & Download</h3>
-        <p class="small">Click <strong>Generate Preview</strong> to open the invoice in a new browser tab. In the preview tab you can switch templates, change colors/fonts applied there (keeps your choices) and download a PDF.</p>
-        <p class="small">Tip: you can change template, accent and font here before generating preview.</p>
+        <p class="small">Click <strong>Generate Preview</strong> to open a formatted invoice in a new tab. From the preview tab click <strong>Download (Print)</strong> and choose "Save as PDF".</p>
         <div class="hr"></div>
-        <h4>Quick buttons</h4>
-        <button class="btn" id="generate_preview_2">Generate Preview (Open Tab)</button>
-        <button class="btn ghost" id="download_preview_pdf">Generate & Download PDF (new tab will trigger download)</button>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button class="btn" id="generate_preview_2">Generate Preview</button>
+          <button class="btn ghost" id="generate_and_print">Generate & Open Print Dialog (optional)</button>
+        </div>
       </aside>
     </main>
 
-    <footer class="footer muted">Built for you — change styles, fonts and templates, then preview in a separate tab.</footer>
+    <footer class="footer muted">Switch template, font and accent then generate preview.</footer>
   </div>
 
-  <!-- libs used in preview tab only; kept here for optional use if you want to use them in parent -->
   <script src="script.js"></script>
 </body>
 </html>

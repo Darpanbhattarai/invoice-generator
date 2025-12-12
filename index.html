@@ -1,202 +1,320 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fortnight Invoice Generator — Input</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- preload chosen fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="app">
-    <header class="topbar">
-      <div class="brand">Fortnight Invoice Generator</div>
-      <div class="actions">
-        <label class="tiny">Template
-          <select id="template_select">
-            <option value="classic" selected>Classic</option>
-            <option value="modern">Modern Clean</option>
-            <option value="minimal">Minimal</option>
-            <option value="boxed">Boxed Professional</option>
-            <option value="ndis">NDIS Formal</option>
-            <option value="dark">Dark Theme</option>
-            <option value="compact">Compact One-Page</option>
-          </select>
-        </label>
-
-        <label class="tiny">Accent
-          <input id="accent_color" type="color" value="#0b75ef">
-        </label>
-
-        <label class="tiny">Font
-          <select id="font_select">
-            <option value="Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Poppins</option>
-            <option value="Roboto,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif">Roboto</option>
-            <option value="Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Inter</option>
-            <option value="Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Montserrat</option>
-            <option value="Open Sans,Arial,Helvetica,sans-serif">Open Sans</option>
-          </select>
-        </label>
-
-        <label class="tiny">GST (10%)
-          <input id="gst_toggle" type="checkbox">
-        </label>
-
-        <button class="btn" id="generate_preview">Generate Preview</button>
-        <button class="btn ghost" id="clear_table">Clear Rows</button>
-      </div>
-    </header>
-
-    <main class="main-grid">
-      <section class="panel inputs">
-        <h2>Invoice Inputs</h2>
-
-        <div class="two-col">
-          <label>Invoice Number
-            <input id="invoice_number" type="text" value="PDCA001">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fortnight Invoice Generator — Input</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">Fortnight Invoice Generator</div>
+        <div class="actions">
+          <label class="tiny">
+            Template
+            <select id="template_select">
+              <option value="classic">Classic</option>
+              <option value="modern">Modern Clean</option>
+              <option value="minimal">Minimal</option>
+              <option value="boxed">Boxed Professional</option>
+              <option value="ndis">NDIS Formal</option>
+              <option value="dark">Dark Theme</option>
+              <option value="compact">Compact One-Page</option>
+            </select>
           </label>
-          <label>Invoice Date
-            <input id="invoice_date" type="date">
+
+          <label class="tiny">
+            Accent
+            <input id="accent_color" type="color" value="#0b75ef" />
           </label>
+
+          <label class="tiny">
+            Font
+            <select id="font_select">
+              <option value="Arial,Helvetica,sans-serif">Arial</option>
+              <option value="'Helvetica Neue',Helvetica,Arial,sans-serif">
+                Helvetica Neue
+              </option>
+              <option
+                value="'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif"
+              >
+                Inter
+              </option>
+              <option
+                value="'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+              >
+                Poppins
+              </option>
+              <option
+                value="'Roboto',system-ui, -apple-system, 'Segoe UI', Arial"
+              >
+                Roboto
+              </option>
+              <option
+                value="'Montserrat',system-ui, -apple-system, 'Segoe UI', Arial"
+              >
+                Montserrat
+              </option>
+              <option value="'Open Sans',Arial,Helvetica,sans-serif">
+                Open Sans
+              </option>
+              <option value="'Lato',Arial,Helvetica,sans-serif">Lato</option>
+              <option value="Georgia,serif">Georgia</option>
+              <option value="Tahoma,Arial,sans-serif">Tahoma</option>
+              <option value="Verdana,Arial,sans-serif">Verdana</option>
+              <option value="'Source Sans Pro',Arial,Helvetica,sans-serif">
+                Source Sans
+              </option>
+              <option value="'Nunito',Arial,Helvetica,sans-serif">
+                Nunito
+              </option>
+              <option value="'Merriweather',serif">Merriweather</option>
+              <option value="'Fira Sans',Arial,Helvetica,sans-serif">
+                Fira Sans
+              </option>
+              <option value="'Work Sans',Arial,Helvetica,sans-serif">
+                Work Sans
+              </option>
+              <option value="'PT Serif',serif">PT Serif</option>
+              <option value="'DM Sans',Arial,Helvetica,sans-serif">
+                DM Sans
+              </option>
+              <option value="'Public Sans',Arial,Helvetica,sans-serif">
+                Public Sans
+              </option>
+              <option value="'Plus Jakarta Sans',Arial,Helvetica,sans-serif">
+                Plus Jakarta Sans
+              </option>
+              <option value="'SF Pro Display',Arial,Helvetica,sans-serif">
+                SF Pro Display (fallback)
+              </option>
+            </select>
+          </label>
+
+          <label class="tiny">
+            GST (10%)
+            <input id="gst_toggle" type="checkbox" />
+          </label>
+
+          <button class="btn" id="generate_preview">Generate Preview</button>
+          <button class="btn ghost" id="clear_table">Clear Rows</button>
         </div>
+      </header>
 
-        <label>Service Period
-          <input id="service_period" type="text" value="14/11/2025 - 27/11/2025">
-        </label>
+      <main class="main-grid">
+        <section class="panel inputs">
+          <h2>Invoice Inputs</h2>
 
-        <div class="hr"></div>
-
-        <div class="two-col">
-          <div>
-            <h3>Bill To</h3>
-            <label>Company
-              <input id="bill_company" type="text" value="Priority Disability Care Australia">
+          <div class="two-col">
+            <label>
+              Invoice Number
+              <input id="invoice_number" type="text" value="PDCA001" />
             </label>
-            <label>ABN
-              <input id="bill_abn" type="text" value="28646508714">
+            <label>
+              Invoice Date
+              <input id="invoice_date" type="date" />
             </label>
           </div>
-          <div>
-            <h3>Contractor</h3>
-            <label>Name
-              <input id="contr_name" type="text" value="Darpan Bhattarai">
+
+          <label>
+            Service Period
+            <input
+              id="service_period"
+              type="text"
+              value="14/11/2025 - 27/11/2025"
+            />
+          </label>
+
+          <div class="hr"></div>
+
+          <div class="two-col">
+            <div>
+              <h3>Bill To</h3>
+              <label>
+                Company
+                <input
+                  id="bill_company"
+                  type="text"
+                  value="Priority Disability Care Australia"
+                />
+              </label>
+              <label>
+                ABN
+                <input id="bill_abn" type="text" value="28646508714" />
+              </label>
+            </div>
+            <div>
+              <h3>Contractor</h3>
+              <label>
+                Name
+                <input id="contr_name" type="text" value="Darpan Bhattarai" />
+              </label>
+              <label>
+                Address
+                <input
+                  id="contr_address"
+                  type="text"
+                  value="Unit 14 40-48 station Road, Auburn NSW 2144"
+                />
+              </label>
+              <label>
+                Phone
+                <input id="contr_phone" type="text" value="0435000754" />
+              </label>
+              <label>
+                ABN
+                <input id="contr_abn" type="text" value="30445347674" />
+              </label>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <h3>Rates & Totals</h3>
+          <div class="rates-grid">
+            <label>
+              Ordinary (per hour)
+              <input
+                id="rate_ordinary"
+                type="number"
+                step="0.01"
+                value="39.39"
+              />
             </label>
-            <label>Address
-              <input id="contr_address" type="text" value="Unit 14 40-48 station Road, Auburn NSW 2144">
+            <label>
+              Afternoon (per hour)
+              <input
+                id="rate_afternoon"
+                type="number"
+                step="0.01"
+                value="43.33"
+              />
             </label>
-            <label>Phone
-              <input id="contr_phone" type="text" value="0435000754">
+            <label>
+              Saturday (per hour)
+              <input
+                id="rate_saturday"
+                type="number"
+                step="0.01"
+                value="55.15"
+              />
             </label>
-            <label>ABN
-              <input id="contr_abn" type="text" value="30445347674">
+            <label>
+              Sunday (per hour)
+              <input
+                id="rate_sunday"
+                type="number"
+                step="0.01"
+                value="70.91"
+              />
             </label>
           </div>
-        </div>
 
-        <div class="hr"></div>
+          <div class="two-col">
+            <label>
+              Travel (total)
+              <input id="travel_total" type="number" step="0.01" value="172" />
+            </label>
+            <label>
+              Reimbursement (total)
+              <input id="reimb_total" type="number" step="0.01" value="27.26" />
+            </label>
+          </div>
 
-        <h3>Rates & Totals</h3>
-        <div class="rates-grid">
-          <label>Ordinary (per hour)
-            <input id="rate_ordinary" type="number" step="0.01" value="39.39">
+          <label>
+            Super Rate (%) — e.g. 10.00
+            <input id="super_rate" type="number" step="0.01" value="10.00" />
           </label>
-          <label>Afternoon (per hour)
-            <input id="rate_afternoon" type="number" step="0.01" value="43.33">
+
+          <div class="hr"></div>
+
+          <h3>Bank & Super</h3>
+          <div class="two-col">
+            <label>
+              Bank
+              <input id="bank_name" type="text" value="Common Bank" />
+            </label>
+            <label>
+              Account Name
+              <input id="bank_acname" type="text" value="Darpan Bhattarai" />
+            </label>
+          </div>
+
+          <div class="two-col">
+            <label>
+              BSB
+              <input id="bank_bsb" type="text" value="062 329" />
+            </label>
+            <label>
+              Account #
+              <input id="bank_acc" type="text" value="1062 4077" />
+            </label>
+          </div>
+
+          <label>
+            Super Fund Name
+            <input id="super_name" type="text" value="Rest Super" />
           </label>
-          <label>Saturday (per hour)
-            <input id="rate_saturday" type="number" step="0.01" value="55.15">
+          <label>
+            Super Fund Account Number
+            <input id="super_acc" type="text" value="713901911" />
           </label>
-          <label>Sunday (per hour)
-            <input id="rate_sunday" type="number" step="0.01" value="70.91">
-          </label>
-        </div>
 
-        <div class="two-col">
-          <label>Travel (total)
-            <input id="travel_total" type="number" step="0.01" value="172">
-          </label>
-          <label>Reimbursement (total)
-            <input id="reimb_total" type="number" step="0.01" value="27.26">
-          </label>
-        </div>
+          <div class="hr"></div>
 
-        <label>Super Rate (%) — e.g. 10.00
-          <input id="super_rate" type="number" step="0.01" value="10.00">
-        </label>
+          <h3>Itemised Work Log (table drives the invoice)</h3>
+          <div class="small">
+            Add rows. If Rate Type left blank the script auto-detects: Sunday →
+            Sunday, Saturday → Saturday, Weekday + Start &gt;= 15:00 →
+            Afternoon, else Ordinary.
+          </div>
 
-        <div class="hr"></div>
+          <table class="items-table" id="items_table_input">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Participant</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Hours</th>
+                <th>KMs</th>
+                <th>Rate Type</th>
+                <th>Line Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="items_body"></tbody>
+          </table>
 
-        <h3>Bank & Super</h3>
-        <div class="two-col">
-          <label>Bank
-            <input id="bank_name" type="text" value="Common Bank">
-          </label>
-          <label>Account Name
-            <input id="bank_acname" type="text" value="Darpan Bhattarai">
-          </label>
-        </div>
+          <div class="table-actions">
+            <button class="btn ghost" id="add_row">+ Add row</button>
+            <div class="small">Rows: <span id="rows_count">0</span></div>
+          </div>
+        </section>
 
-        <div class="two-col">
-          <label>BSB
-            <input id="bank_bsb" type="text" value="062 329">
-          </label>
-          <label>Account #
-            <input id="bank_acc" type="text" value="1062 4077">
-          </label>
-        </div>
-
-        <label>Super Fund Name
-          <input id="super_name" type="text" value="Rest Super">
-        </label>
-        <label>Super Fund Account Number
-          <input id="super_acc" type="text" value="713901911">
-        </label>
-
-        <div class="hr"></div>
-
-        <h3>Itemised Work Log</h3>
-        <div class="small">Add rows. Rate Type blank = auto-detect (Sunday, Saturday, Afternoon if start >= 15:00, else Ordinary).</div>
-
-        <table class="items-table" id="items_table_input">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Day</th>
-              <th>Participant</th>
-              <th>Start</th>
-              <th>End</th>
-              <th>Hours</th>
-              <th>KMs</th>
-              <th>Rate Type</th>
-              <th>Line Total</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="items_body"></tbody>
-        </table>
-
-        <div class="table-actions">
-          <button class="btn ghost" id="add_row">+ Add row</button>
-          <div class="small">Rows: <span id="rows_count">0</span></div>
-        </div>
-
-      </section>
-
-      <aside class="panel preview-instructions">
-        <h3>Preview & Download</h3>
-        <p class="small">Click <strong>Generate Preview</strong> to open a formatted invoice in a new tab. From the preview tab click <strong>Download (Print)</strong> and choose "Save as PDF".</p>
-        <div class="hr"></div>
-        <div style="display:flex;flex-direction:column;gap:8px">
+        <aside class="panel preview-instructions">
+          <h3>Preview & Download</h3>
+          <p class="small">
+            Click <strong>Generate Preview</strong> to open a formatted invoice
+            in a new tab. In that tab click <strong>Download (Print)</strong> to
+            save as PDF (browser print is used for best fidelity).
+          </p>
+          <div class="hr"></div>
+          <h4>Quick buttons</h4>
           <button class="btn" id="generate_preview_2">Generate Preview</button>
-          <button class="btn ghost" id="generate_and_print">Generate & Open Print Dialog (optional)</button>
-        </div>
-      </aside>
-    </main>
+          <button class="btn ghost" id="generate_and_print">
+            Generate &amp; Open Print Dialog
+          </button>
+        </aside>
+      </main>
 
-    <footer class="footer muted">Switch template, font and accent then generate preview.</footer>
-  </div>
+      <footer class="footer muted">
+        You can switch template, font and accent before generating the preview.
+      </footer>
+    </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
